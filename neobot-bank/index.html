@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBot Bank - Seu Banco Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- TELA DE LOGIN -->
+    <div id="login-screen" class="screen active">
+        <div class="login-card">
+            <div class="logo">
+                <i class="fa-solid fa-robot"></i> NeoBot <span>Bank</span>
+            </div>
+            <h2>Acesse sua conta</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="cpf"><i class="fa-solid fa-user"></i> CPF ou E-mail</label>
+                    <input type="text" id="cpf" placeholder="000.000.000-00" required>
+                </div>
+                <div class="input-group">
+                    <label for="password"><i class="fa-solid fa-lock"></i> Senha</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Entrar na Conta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TELA DO DASHBOARD (ÁREA LOGADA) -->
+    <div id="dashboard-screen" class="screen">
+        <!-- BARRA SUPERIOR -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-robot"></i> NeoBot <span>Bank</span>
+            </div>
+            <div class="user-profile">
+                <span id="user-name">Olá, Cliente</span>
+                <button id="logout-btn" class="btn-icon" title="Sair"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+        </header>
+
+        <main class="dashboard-container">
+            <!-- CARTÃO DE SALDO -->
+            <section class="card balance-card">
+                <div class="card-header">
+                    <span>Saldo em Conta</span>
+                    <button id="toggle-balance" class="btn-icon"><i class="fa-solid fa-eye"></i></button>
+                </div>
+                <div class="balance-value" id="balance-display">R$ 2.450,80</div>
+                <div class="account-info">
+                    <span>Agência: 0001</span> | <span>Conta: 123456-7</span>
+                </div>
+            </section>
+
+            <!-- AÇÕES RÁPIDAS -->
+            <section class="quick-actions">
+                <button class="action-btn" onclick="openModal('pix')">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Pix</span>
+                </button>
+                <button class="action-btn" onclick="openModal('transfer')">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Transferir</span>
+                </button>
+
+                <button class="action-btn" onclick="openModal('pay')">
+                    <i class="fa-solid fa-barcode"></i>
+                    <span>Pagar</span>
+                </button>
+                <button class="action-btn" id="open-chat-action">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Ajuda AI</span>
+                </button>
+            </section>
+
+            <!-- EXTRATO -->
+            <section class="card statement-card">
+                <h3><i class="fa-solid fa-list-ul"></i> Últimas Movimentações</h3>
+                <ul class="statement-list" id="statement-list">
+                    <li class="statement-item in">
+                        <div class="info">
+                            <strong>Transferência Recebida (Pix)</strong>
+                            <small>Hoje, 10:15</small>
+                        </div>
+                        <span class="value">+ R$ 150,00</span>
+                    </li>
+                    <li class="statement-item out">
+                        <div class="info">
+                            <strong>Supermercado Delta</strong>
+                            <small>Ontem, 18:30</small>
+                        </div>
+                        <span class="value">- R$ 89,20</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- CHATBOT WIDGET -->
+        <div id="chat-widget" class="chat-widget hidden">
+            <div class="chat-header">
+                <div class="bot-info">
+                    <i class="fa-solid fa-robot"></i>
+                    <div>
+                        <strong>NeoAssistente AI</strong>
+                        <small>Online 24h</small>
+                    </div>
+                </div>
+                <button id="close-chat" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Olá! Sou o NeoAssistente do NeoBot Bank. Como posso te ajudar hoje?
+                </div>
+            </div>
+
+            <div class="chat-quick-replies">
+                <button onclick="sendQuickReply('Qual o meu saldo?')">💰 Saldo</button>
+                <button onclick="sendQuickReply('Como cadastrar chave Pix?')">⚡ Chave Pix</button>
+                <button onclick="sendQuickReply('Quais são as tarifas?')">📄 Tarifas</button>
+            </div>
+
+            <form id="chat-form" class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem ou dúvida..." autocomplete="off">
+                <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+        <!-- BOTÃO FLUTUANTE DO CHATBOT -->
+        <button id="chat-toggle-btn" class="chat-toggle-btn">
+            <i class="fa-solid fa-robot"></i>
+        </button>
+    </div>
+
+    <!-- MODAIS GENÉRICOS DE OPERAÇÃO -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title">Operação</h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
