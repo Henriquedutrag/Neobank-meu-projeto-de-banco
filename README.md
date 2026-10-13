@@ -38,14 +38,6 @@ O **NeoBot Bank** nasceu como um projeto acadêmico focado em criar uma experiê
 
 ---
 
-## 🎨 Demonstração Visual
-
-| Tela Principal (Dashboard) | Chatbot (NeoBot) |
-| :---: | :---: |
-| *(Adicione uma imagem/GIF do Dashboard aqui)* | *(Adicione uma imagem/GIF do Chatbot aqui)* |
-
----
-
 ## 🛠️ Tecnologias Utilizadas
 
 O projeto foi desenvolvido com as seguintes tecnologias:
